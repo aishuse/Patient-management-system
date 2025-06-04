@@ -78,13 +78,13 @@ def landing_page():
 def about_page():
     return {
         "message": (
-            "This is a Patient Management System built with FastAPI. "
-            "It allows you to create, view, update, and delete patient records. "
-            "You can also sort patients by BMI, height, or weight, and view individual details. "
-            "The system calculates each patient's BMI and provides a health verdict (e.g., Normal, Underweight, Obese). "
-            "This project is designed to be easily integrated with LangChain and Streamlit for LLM-powered search and visualization."
+            "Welcome to the Patient Management System 🩺. "
+            "This platform allows you to create, view, update, and delete patient records efficiently. "
+            "You can also sort patient data by BMI, height, or weight, and explore key insights using natural language queries. "
+            "Stay informed with the latest medical news integrated directly into the dashboard."
         )
     }
+
 
 
 @app.get('/view')
@@ -160,6 +160,9 @@ def delete_patient(patient_id: str):
 
 
 groq_model = ChatGroq(model_name="llama3-70b-8192", api_key=groq_api_key)
-prompt = ChatPromptTemplate.from_template("Answer based on {topic} from {file} file. if you couldnt find the answer, please say so.")
+prompt = ChatPromptTemplate.from_template(
+    "Carefully understand the user's question. Use the information from the {file} file to answer based on the relevant {topic}. "
+    "If the answer cannot be found in the file, clearly state that the information is not available."
+)
 essay_chain = prompt | groq_model
 add_routes(app, essay_chain, path="/query")
