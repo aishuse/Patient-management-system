@@ -9,4 +9,7 @@ uvicorn
 sse_starlette
 duckduckgo-search
 agno
+requests
+pandas
+pydantic
 
