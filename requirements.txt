@@ -12,4 +12,5 @@ agno
 requests
 pandas
 pydantic
+langchain-groq
 
