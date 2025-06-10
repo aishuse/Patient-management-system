@@ -11,6 +11,7 @@ import os
 from langchain_community.chat_models import ChatOllama
 from dotenv import load_dotenv
 from fastapi import FastAPI
+from utils import load_data
 
 # Load environment variables
 load_dotenv()
@@ -60,11 +61,6 @@ class PatientUpdate(BaseModel):
     height: Annotated[Optional[float], Field(default=None, gt=0)]
     weight: Annotated[Optional[float], Field(default=None, gt=0)]
     diagnosis: Annotated[Optional[str], Field(default=None)]    
-
-def load_data():
-    with open('patients.json') as f:
-        data = json.load(f)
-        return data
 
 def save_data(data):
     with open('patients.json', 'w') as f:
