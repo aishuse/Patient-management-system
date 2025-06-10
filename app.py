@@ -15,8 +15,8 @@ st.set_page_config(page_title="Patient Management System", layout="wide")
 # Load environment variables
 load_dotenv()
 groq_api_key = os.getenv("GROQ_API_KEY")
-BASE_URL = "http://localhost:8000"
-# BASE_URL = "http://3.16.207.21:8000"
+# BASE_URL = "http://localhost:8000"
+BASE_URL = "http://3.16.207.21:8000"
 # Title
 st.title("🩺 Patient Management System")
 
